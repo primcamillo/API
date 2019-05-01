@@ -33,3 +33,41 @@ const data = [{
     "art_url": "http://assets22.pokemon.com/assets/cms2/img/pokedex/full/005.png",
     "types": ["fire"]
 }]
+
+const app = document.getElementById('root');
+const container = document.createElement('div');
+container.setAttribute('class', 'container');
+
+app.appendChild(container);
+
+/* data.forEach(movie =>{ codigo aqui}*/
+
+for (let i = 0; i < data.length; i++) {
+    let movie = data[i];
+
+    let card = document.createElement('div');
+    card.setAttribute('class', 'card');
+    container.appendChild(card);
+
+    let h1 = document.createElement('h1');
+    h1.textContent = movie.name;
+    card.appendChild(h1);
+
+    let p = document.createElement('p'); //let descricao = document.createElement('p');
+    p.innerHTML = movie.description;             //descricao.innerHTML = movie.name;
+    card.appendChild(p); //card.appendChild(descricao);
+    
+
+    let myImage = document.createElement('img');
+    myImage.setAttribute('src', movie.art_url);
+    card.appendChild(myImage);
+
+
+    let tipo = document.createElement('p');
+    if (movie.types.length>1){
+        tipo.innerHTML = 'type: '+movie.types[0]+ ' e ' +movie.types[1]
+    } else{
+        tipo.innerHTML = 'type: '+movie.types[0]
+        card.appendChild(tipo); //h1.appendChild(tipo)
+    }
+}
